@@ -5,8 +5,8 @@ import DataItem from "./DataItem.jsx";
 export default function ItemList(props) {
     
     return (
-    <div style={{border: "2px solid red"}}>
-        <h1>Dette er vores todo list. Og Persian er sej.</h1>
+    <div style={{border: "4px solid white", margin: "10px", padding: "20px"}}>
+        <h1>Gentlewoman Clothes</h1>
         
         {props.dataItems.map((data) => {
             return (
