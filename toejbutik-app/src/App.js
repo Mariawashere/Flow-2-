@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
-import { Data } from "./Data";
+import { Data } from "./data";
+import ItemList from './ItemList';
 
 function App() {
   // Vi 'leger' at vi har hentet disse data fra serveren og databasen.
