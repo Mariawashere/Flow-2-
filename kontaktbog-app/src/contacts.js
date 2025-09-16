@@ -1,4 +1,4 @@
-export class Contacts{
+export class Contact{
     constructor( firstname, lastname, email, phone, company, position){
         this.firstname = firstname; 
         this.lastname = lastname; 
