@@ -1,5 +1,5 @@
-export default function dataItem(props) {
+export default function DataItem(props) {
     return (
-        <h2>{props.data.title}</h2>
+        <h2>{props.data.brand}</h2>
     )
 }
