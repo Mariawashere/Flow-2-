@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import {Contacts} from "./contacts"; 
+import {Contact} from "./contacts"; 
 import ContactList from './ContactList';
 
 function App() {
