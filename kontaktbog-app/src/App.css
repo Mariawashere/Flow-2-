@@ -1,38 +1,43 @@
+/* Remove default page rim */
+html, body, #root {
+  height: 100%;
+}
+body {
+  margin: 0;
+}
+
+/* App wrapper (optional styling) */
 .App {
-  text-align: center;
+  /* remove invalid text-align */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Flex row that spans full width */
+.info-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  /* No extra spacing on sides or between columns */
+  justify-content: flex-start;
+  align-items: stretch;
+
+  /* Make sure it fills the width */
+  width: 100%;
+  min-height: 100vh; /* optional – full height */
 }
 
-.App-link {
-  color: #61dafb;
+/* Columns: 50/50, no outer gaps, 5px inner padding */
+.personer,
+.kontaktinfo {
+  flex: 1 1 50%;
+  padding: 5px;              /* inner padding as requested */
+  box-sizing: border-box;    /* includes padding in width */
+  /* Optional backgrounds to visualize edges */
+  /* background: #e0f7fa; */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Optional: visual divider without adding a gap */
+.personer {
+  /* border-right: 1px solid #ddd; */
 }
+
+/* Remove this stray comment line that was in your CSS:
+-/*
+*/

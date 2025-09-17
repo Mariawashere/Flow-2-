@@ -14,10 +14,13 @@ function App() {
   
   return (
     <div className="App">
-      <header className="App-header">
+      <header className="App-header"></header>
+
+      <div className="info-container">
+        <div className="personer"><ContactList OurContacts={contacts}/></div>
        
-      <ContactList OurContacts={contacts}/>
-      </header>
+        <div className="Kontatktinfo"><ContactList OurContacts={contacts}/></div>
+      </div>
     </div>
   );
 }
