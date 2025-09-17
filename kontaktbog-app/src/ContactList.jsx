@@ -7,7 +7,7 @@ export default function ContactList(props) {
     
     return (
     <div style={{border: "2px solid red"}}>
-        <h1>Dette er vores todo list. Og Persian er sej.</h1>
+        <h1>Kontaktbog</h1>
         
         {props.OurContacts.map((contact) => {
             return (
