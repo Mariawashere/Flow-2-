@@ -15,8 +15,19 @@ function App() {
       <header className="App-header">
         {/* <img src={logo} className="App-logo" alt="logo" /> */}
         
-        <ItemList dataItems={items}/>
+        
       </header>
+      <div className='ItemList'>
+          <div className='produkter'><ItemList dataItems={items}/></div>   
+          <div className='bluser'><ItemList dataItems={items}/></div>
+          <div className='bukser'><ItemList dataItems={items}/></div>
+          <div className='T-shirts'><ItemList dataItems={items}/></div>
+          <div className='Hoodies'><ItemList dataItems={items}/></div>
+          <div className='Jakker'><ItemList dataItems={items}/></div>
+          <div className='tilbehør'><ItemList dataItems={items}/></div>
+
+      </div>
+
     </div>
   );
 }
