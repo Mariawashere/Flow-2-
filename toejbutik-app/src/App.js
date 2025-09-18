@@ -21,9 +21,9 @@ function App() {
           <div className='produkter'><ItemList dataItems={items}/></div>   
           <div className='bluser'><ItemList dataItems={items}/></div>
           <div className='bukser'><ItemList dataItems={items}/></div>
-          <div className='T-shirts'><ItemList dataItems={items}/></div>
-          <div className='Hoodies'><ItemList dataItems={items}/></div>
-          <div className='Jakker'><ItemList dataItems={items}/></div>
+          <div className='t-shirts'><ItemList dataItems={items}/></div>
+          <div className='hoodies'><ItemList dataItems={items}/></div>
+          <div className='jakker'><ItemList dataItems={items}/></div>
           <div className='tilbehør'><ItemList dataItems={items}/></div>
 
       </div>
