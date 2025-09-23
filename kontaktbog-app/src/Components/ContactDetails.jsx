@@ -1,6 +1,17 @@
 import React from "react";
 
+/**
+ * Viser information om den valgte kontakt i højre kolonne.
+ *
+ * Props:
+ * - contact: objekt med data om den valgte kontakt, eller null hvis ingen valgt
+ * - onEdit: funktion der kalder App's openEdit() (åbner modal med forudfyldt data)
+ * - onDelete: funktion der kalder App's handleDelete() (fjerner kontakt)
+ */
+
 export default function ContactDetails({ contact, onEdit, onDelete }) {
+
+  // Hvis der ikke er nogen valgt kontakt → vis info-tekst
   if (!contact) {
     return (
       <div className="section">
@@ -9,6 +20,7 @@ export default function ContactDetails({ contact, onEdit, onDelete }) {
     );
   }
 
+  // Hvis der ER en kontakt valgt → vis alle felter
   return (
     <div className="section details">
       <div>

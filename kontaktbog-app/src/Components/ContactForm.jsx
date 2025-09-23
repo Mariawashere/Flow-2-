@@ -1,6 +1,18 @@
 import React, { useEffect, useState } from "react";
 
+/**
+ * Vis en formular i en popup (modal) til enten at tilføje eller redigere en kontakt.
+ *
+ * Props:
+ * - open: true/false → viser eller skjuler modal
+ * - initial: kontakt der skal redigeres (hvis nogen), eller null hvis ny
+ * - onCancel: funktion til at lukke modal uden at gemme
+ * - onSave: funktion der kaldes med kontaktdata når der gemmes
+ */
+
 export default function ContactForm({ open, initial, onCancel, onSave }) {
+   
+  // State til at holde formularens felter
   const [form, setForm] = useState({
     name: "",
     phone: "",
@@ -9,6 +21,8 @@ export default function ContactForm({ open, initial, onCancel, onSave }) {
     notes: "",
   });
 
+
+   // Når modal åbnes, forudfyld med data (hvis vi redigerer)
   useEffect(() => {
     if (open) {
       setForm(initial ?? {
@@ -21,21 +35,35 @@ export default function ContactForm({ open, initial, onCancel, onSave }) {
     }
   }, [open, initial]);
 
+  // Hvis modal ikke skal vises, returnér null (vis intet)
   if (!open) return null;
 
+
+  // Hvis initial er sat → vi er i redigerings-mode
   const isEdit = Boolean(initial);
 
+  // Opdater felterne når brugeren skriver i formularen
   const update = (e) => {
     const { name, value } = e.target;
     setForm((f) => ({ ...f, [name]: value }));
   };
 
+  // Når brugeren trykker på "Gem" knappen
   const submit = (e) => {
-    e.preventDefault();
+
+    e.preventDefault();       // Undgå at siden genindlæses
+
+    // Enkel validering
     if (!form.name.trim()) return alert("Please enter a name.");
     if (!form.phone.trim()) return alert("Please enter a phone number.");
 
+
+    // Byg kontaktobjekt:
+    // - Hvis vi redigerer, behold samme ID
+    // - Hvis vi tilføjer ny, lav nyt ID med Date.now()
     const payload = isEdit ? { ...initial, ...form } : { id: Date.now(), ...form };
+
+    // Giv data til App-komponenten
     onSave(payload);
   };
 
