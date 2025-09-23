@@ -1,35 +1,40 @@
-import logo from './logo.svg';
 import './App.css';
-import { Data } from "./data";
+import Data from "./data";
 import ItemList from './ItemList';
+import { useState } from "react";
+import Cart from "./Cart";
 
 function App() {
   // Vi 'leger' at vi har hentet disse data fra serveren og databasen.
   const items = [
-        new Data(1, 'mærke', 'model', 'xs', '150', 'red', 'desc'),
-        new Data(2, 'mærke2', 'model2', 's', '175', 'pink', 'desc'),
+        new Data(1, 'Gentlewoman', 'model1', 'xs', '150', 'red', 'Elegant and minimalistic'),
+        new Data(2, 'Gentlewoman', 'model2', 's', '175', 'pink', 'Soft and feminine'),
     ]
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
-        
-        
-      </header>
-      <div className='ItemList'>
-          <div className='produkter'><ItemList dataItems={items}/></div>   
-          <div className='bluser'><ItemList dataItems={items}/></div>
-          <div className='bukser'><ItemList dataItems={items}/></div>
-          <div className='t-shirts'><ItemList dataItems={items}/></div>
-          <div className='hoodies'><ItemList dataItems={items}/></div>
-          <div className='jakker'><ItemList dataItems={items}/></div>
-          <div className='tilbehør'><ItemList dataItems={items}/></div>
+    const [availableClothes, setAvailableClothes] = useState(items);
+    const [cart, setCart] = useState([]);
 
+    const addToCart = (id) => {
+      const item = availableClothes.find((c) => c.id === id);
+      if (!item) return;
+
+      setAvailableClothes(availableClothes.filter((c) => c.id !== id));
+      setCart([...cart, item]);
+    };
+
+    return (
+      <div className="container mt-4">
+        <div className="row">
+          <div className="col-md-8">
+            <ItemList clothes={availableClothes} addToCart={addToCart} />
+          </div>
+          <div className="col-md-4">
+            <h2>Cart</h2>
+            <Cart cart={cart} />
+          </div>
+        </div>
       </div>
-
-    </div>
-  );
+    );
 }
 
 export default App;

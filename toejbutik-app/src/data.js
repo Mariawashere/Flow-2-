@@ -1,4 +1,4 @@
-export class Data {
+export default class Data {
     constructor(id, brand, model, size, price, color, description) {
         this.id = id;
         this.brand = brand;

@@ -1,29 +1,22 @@
-export default function DataItem(props) {
-// dataItem er en komponent der modtager et produkt (et data-objekt)
+function DataItem({ item, addToCart }) {
+        return (
+          <div className="card h-100">
+            <div className="card-body">
+              <h5 className="card-title">{item.brand} - {item.model}</h5>
+              <p className="card-text">Size: {item.size}</p>
+              <p className="card-text">Color: {item.color}</p>
+              <p className="card-text">{item.description}</p>
+              <h6 className="card-subtitle mb-2 text-muted">{item.price} kr.</h6>
+              <button
+                className="btn btn-primary"
+                onClick={() => addToCart(item.id)}>
 
-     const DataItem = [  // her er vores data som vi 'henter' fra databasen/serveren
-  {
-    brand: "Gentlewoman",
-    model: "Model1",
-    size: "XS",
-    price: 150,
-    color: "Red",
-    description: "Elegant and minimalistic"
-  },
-  {
-    brand: "Gentlewoman",
-    model: "Model2",
-    size: "S",
-    price: 175,
-    color: "Pink",
-    description: "Soft and feminine"
-  }
-];
-      return (
-        <div>
-            <ul>
-                <li>{props.data.brand} - {props.data.model} - {props.data.size} - {props.data.price} DKK - {props.data.color} - {props.data.description}</li>
-            </ul>
-        </div>
-      );
-    }
+                Add to cart
+
+              </button>
+            </div>
+          </div>
+        );
+      }
+      
+      export default DataItem;
