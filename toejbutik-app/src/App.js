@@ -22,6 +22,14 @@ function App() {
       setCart([...cart, item]);
     };
 
+    const removeFromCart = (id) => {
+      const item = cart.find((c) => c.id === id);
+      if (!item) return;
+  
+      setCart(cart.filter((c) => c.id !== id));
+      setAvailableClothes([...availableClothes, item]);
+    };
+
     return (
       <div className="container mt-4">
         <div className="row">
@@ -30,7 +38,7 @@ function App() {
           </div>
           <div className="col-md-4">
             <h2>Cart</h2>
-            <Cart cart={cart} />
+            <Cart cart={cart} removeFromCart={removeFromCart} />
           </div>
         </div>
       </div>
