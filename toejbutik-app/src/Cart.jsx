@@ -1,6 +1,6 @@
 import CartItem from "./CartItem";
 
-function Cart({ cart }) {
+function Cart({ cart, removeFromCart }) {
   if (cart.length === 0) {
     return <p>The cart is empty.</p>;
   }
@@ -8,7 +8,7 @@ function Cart({ cart }) {
   return (
     <ul className="list-group">
       {cart.map((item) => (
-        <CartItem key={item.id} item={item} />
+        <CartItem key={item.id} item={item} removeFromCart={removeFromCart} />
       ))}
     </ul>
   );
