@@ -3,6 +3,7 @@ import Data from "./data";
 import ItemList from './ItemList';
 import { useState } from "react";
 import Cart from "./Cart";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   // Vi 'leger' at vi har hentet disse data fra serveren og databasen.
