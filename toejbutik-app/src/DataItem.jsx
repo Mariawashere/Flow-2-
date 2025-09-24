@@ -18,9 +18,9 @@ function DataItem({ item, addToCart }) {
           <div className="card h-100">
             <img 
               src={imageSrc || `https://via.placeholder.com/200x200/ff69b4/ffffff?text=Item+${item.id}`} 
-              className="card-img-top" 
+              className="card-img-top img-fluid"
               alt={`${item.brand} ${item.model}`}
-              style={{height: '200px', objectFit: 'cover'}}
+              style={{height: '450px', objectFit: 'cover'}}
               onError={(e) => {
                 console.log('Local image failed, using fallback:', e.target.src);
                 e.target.src = `https://via.placeholder.com/200x200/ff69b4/ffffff?text=Item+${item.id}`;
