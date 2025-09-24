@@ -8,8 +8,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   // Vi 'leger' at vi har hentet disse data fra serveren og databasen.
   const items = [
-        new Data(1, 'Gentlewoman', 'model1', 'xs', '150', 'red', 'Elegant and minimalistic'),
-        new Data(2, 'Gentlewoman', 'model2', 's', '175', 'pink', 'Soft and feminine'),
+        new Data(1, 'Gentlewoman', 'high waisted bukser', 'xs', '150', 'hvid', 'Elegant and minimalistic'),
+        new Data(2, 'Gentlewoman', 'kjole', 's', '175', 'blå', 'Soft and feminine'),
+        new Data(3, 'Gentlewoman', 'open back top', 'm', '200', 'sort', 'Casual and comfortable'),
+        new Data(4, 'Gentlewoman', 'hvidt top & bottom sæt', 'm', '375', 'hvid', 'Chic and trendy'),
+        new Data(5, 'Gentlewoman', 'full body suit', 'l', '300', 'hvid', 'Modern and soft'),
+        new Data(6, 'Gentlewoman', '3-piece set', 's', '420', 'creme', 'Soft and comfortable'), 
     ]
 
     const [availableClothes, setAvailableClothes] = useState(items);

@@ -3,7 +3,11 @@ function DataItem({ item, addToCart }) {
         const getImageForItem = (id) => {
           const imageMap = {
             1: '/img/bukser.jpg',
-            2: '/img/kjole.jpg'
+            2: '/img/kjole.jpg',
+            3: '/img/open-back-top.jpg',
+            4: '/img/jakkesæt.jpg',
+            5: '/img/hvidt-sæt.jpg',
+            6: '/img/creme-sæt.jpg'
           };
           return imageMap[id];
         };
