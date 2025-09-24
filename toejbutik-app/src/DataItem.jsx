@@ -1,12 +1,9 @@
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-
 function DataItem({ item, addToCart }) {
-        // Simple image mapping based on item ID - trying different approaches
+        // Simple image mapping based on item ID
         const getImageForItem = (id) => {
           const imageMap = {
-            1: process.env.PUBLIC_URL + '/img/bukser.jpg',
-            2: process.env.PUBLIC_URL + '/img/kjole.jpg'
+            1: '/img/bukser.jpg',
+            2: '/img/kjole.jpg'
           };
           return imageMap[id];
         };
@@ -40,7 +37,7 @@ function DataItem({ item, addToCart }) {
 
               </button>
             </div>
-        </div>
+          </div>
         );
       }
       
