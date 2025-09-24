@@ -1,6 +1,28 @@
 function DataItem({ item, addToCart }) {
+        // Simple image mapping based on item ID - trying different approaches
+        const getImageForItem = (id) => {
+          const imageMap = {
+            1: process.env.PUBLIC_URL + '/img/bukser.jpg',
+            2: process.env.PUBLIC_URL + '/img/kjole.jpg'
+          };
+          return imageMap[id];
+        };
+
+        const imageSrc = getImageForItem(item.id);
+        
         return (
           <div className="card h-100">
+            <img 
+              src={imageSrc || `https://via.placeholder.com/200x200/ff69b4/ffffff?text=Item+${item.id}`} 
+              className="card-img-top" 
+              alt={`${item.brand} ${item.model}`}
+              style={{height: '200px', objectFit: 'cover'}}
+              onError={(e) => {
+                console.log('Local image failed, using fallback:', e.target.src);
+                e.target.src = `https://via.placeholder.com/200x200/ff69b4/ffffff?text=Item+${item.id}`;
+              }}
+              onLoad={(e) => console.log('Image loaded successfully:', e.target.src)}
+            />
             <div className="card-body">
               <h5 className="card-title">{item.brand} - {item.model}</h5>
               <p className="card-text">Size: {item.size}</p>

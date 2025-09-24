@@ -1,5 +1,5 @@
 export default class Data {
-    constructor(id, brand, model, size, price, color, description, image) {
+    constructor(id, brand, model, size, price, color, description) {
         this.id = id;
         this.brand = brand;
         this.model = model;
@@ -7,6 +7,5 @@ export default class Data {
         this.price = price;
         this.color = color;
         this.description = description;
-        this.image = image;
     }
 }
