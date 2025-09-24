@@ -6,7 +6,8 @@ import Cart from "./Cart";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-  // Vi 'leger' at vi har hentet disse data fra serveren og databasen.
+  // Vi 'leger' at vi har hentet disse data fra serveren og databasen
+  // Opret produkter som Data-objekter
   const items = [
         new Data(1, 'Gentlewoman', 'high waisted bukser', 'xs', '150', 'hvid', 'Elegant and minimalistic'),
         new Data(2, 'Gentlewoman', 'kjole', 's', '175', 'blå', 'Soft and feminine'),
@@ -16,22 +17,33 @@ function App() {
         new Data(6, 'Gentlewoman', '3-piece set', 's', '420', 'creme', 'Soft and comfortable'), 
     ]
 
+    // State:items der er tilgængelige
     const [availableClothes, setAvailableClothes] = useState(items);
+    // State: items der er lagt i cart
     const [cart, setCart] = useState([]);
 
     const addToCart = (id) => {
-      const item = availableClothes.find((c) => c.id === id);
+      // Finder produktet i listen af tilgængelige
+      const item = availableClothes.find((product) => product.id === id);
       if (!item) return;
 
-      setAvailableClothes(availableClothes.filter((c) => c.id !== id));
+      // Fjerner produktet fra tilgængelige
+      setAvailableClothes(availableClothes.filter((product) => product.id !== id));
+
+      // Tilføjer produktet til cart
       setCart([...cart, item]);
     };
 
+
+
     const removeFromCart = (id) => {
-      const item = cart.find((c) => c.id === id);
+    // Finder produktet i cart
+    const item = cart.find((product) => product.id === id);
       if (!item) return;
   
-      setCart(cart.filter((c) => c.id !== id));
+      // Fjerner produktet fra cart
+      setCart(cart.filter((product) => product.id !== id));
+      // Lægger produktet tilbage i listen af tilgængelige
       setAvailableClothes([...availableClothes, item]);
     };
 
