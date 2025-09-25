@@ -13,8 +13,8 @@ export default function App() {
   const [selectedId, setSelectedId] = useState(contacts[0]?.id ?? null);
 
   // Brug vores custom hook til at styre om formularen (modalen) er åben
-  const form = useToggle(false); // ✅ replaces [formOpen, setFormOpen]
-
+  const form = useToggle(false);
+  
   // Hvis vi redigerer en kontakt, gemmer vi kontaktens data her
   // Hvis vi tilføjer en ny kontakt, er den sat til null
   const [editing, setEditing] = useState(null);
