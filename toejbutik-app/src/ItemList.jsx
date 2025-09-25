@@ -1,5 +1,7 @@
 import DataItem from "./DataItem";
 
+// ItemList-component modtager to props
+// clothes: en liste, addToCart: en funktion
 export default function ItemList({ clothes, addToCart }) {
 
     return (
@@ -8,23 +10,12 @@ export default function ItemList({ clothes, addToCart }) {
              <h1>Gentlewoman Clothes</h1>
              <div style={{border: "4px solid black", margin: "10px", padding: "20px"}}>
                 <div className="row">
-                        
+                
+                {/* Map looper igennem alle produkter i clothes-listen */}
                    {clothes.map((item) => (
-                    <div className="col-md-6 mb-3" key={item.id}
-                    
-                    style={{  //layout styling/
-                    border: "1px solid #ccc",
-                    borderRadius: "8px",
-                    padding: "20px",
-                    marginBottom: "12px",
-                    boxShadow: "0 2px 5px rgba(0,0,0,0.1)",
-                    width: "250px",
-                    backgroundColor: "#fff",
-                    display:"flex",
-                    flexWrap: "wrap",
-                    gap: "20px",
-                    justifyContent: "center",
-                    }}>
+                    <div className="col-md-6 mb-3" key={item.id}>
+                    {/* Viser selve produktet med DataItem-component */}
+                    {/* Sender item-objektet og addToCart-funktionen videre som props */}
                     <DataItem item={item} addToCart={addToCart} />
                     </div>
                     ))} 
