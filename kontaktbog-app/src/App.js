@@ -1,11 +1,43 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useEffect, useState } from "react";
 import { initialContacts } from "./Data/contacts";
 import ContactList from "./Components/ContactList";
 import ContactDetails from "./Components/ContactDetails";
 import ContactForm from "./Components/ContactForm";
 import useToggle from "./Hooks/useToggle"; // ✅ new import
+import AddContact from "./AddContact";
+import { createClient } from '@supabase/supabase-js'
 
-export default function App() {
+
+// Opret forbindelse til Supabase
+  const supabaseUrl = 'https://jdfuskuvvrswqxjyhzyb.supabase.co'
+  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpkZnVza3V2dnJzd3F4anloenliIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk0MTYxODYsImV4cCI6MjA3NDk5MjE4Nn0.Id8NLZXlNKW96d2D1esaIQYfotCyx0l0assQUqUYlOY'
+  const supabase = createClient(supabaseUrl, supabaseKey)
+
+
+  export default function App() {
+  // Eksempel på at hente data fra Supabase (kan tilpasses efter behov)
+  const getContacts = async () => {
+    const url = 'https://jdfuskuvvrswqxjyhzyb.supabase.co/rest/v1';
+    const apikey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt2c3Jhd2dhdnhrcnN2bWl2anZmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTkxNDExMzksImV4cCI6MjA3NDcxNzEzOX0.xGPY_82uf8focdGT05Jt62u5Z_oNcoOBzvaFgGb6X1I';
+
+    const data = await fetch(url + "/contacts", {
+      headers: {
+        apikey: apikey,
+        Authorization: 'Bearer ' + apikey
+      }
+    }).then(response => response.json())
+
+    setContacts(data);
+    //console.log(data);
+  }
+
+  useEffect(() => {
+    getContacts();
+  }, [])
+
+
+
+
   // Kontaktlisten gemmes i state (vi starter med initialContacts)
   const [contacts, setContacts] = useState(initialContacts);
 
