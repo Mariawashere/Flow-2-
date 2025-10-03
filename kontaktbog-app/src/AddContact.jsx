@@ -10,10 +10,10 @@ export default function AddContact({ setContacts, contacts }) {
     const [ notes, setNotes ] = useState("")
 
   const createContact = async (contact) => {
-    const url = 'https://jdfuskuvvrswqxjyhzyb.supabase.co/rest/v1/contacts';
+    const url = 'https://jdfuskuvvrswqxjyhzyb.supabase.co/rest/v1';
     const apikey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpkZnVza3V2dnJzd3F4anloenliIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk0MTYxODYsImV4cCI6MjA3NDk5MjE4Nn0.Id8NLZXlNKW96d2D1esaIQYfotCyx0l0assQUqUYlOY';
 
-    const result = await fetch(url, {
+    const result = await fetch(url + "/contacts", {
       method: "POST",
       body: JSON.stringify(contact),
       headers: {
@@ -32,7 +32,7 @@ export default function AddContact({ setContacts, contacts }) {
     e.preventDefault();
 
     if (name !== "") {
-      const newContactItem = new contacts(name, email, phone, company, notes);
+      const newContactItem = new initialContacts(name, email, phone, company, notes);
 
         // kald supabase, gem ny todo
         const contactFromServer = await createContact(newContactItem);
