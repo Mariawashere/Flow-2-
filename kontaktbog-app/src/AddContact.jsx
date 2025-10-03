@@ -1,9 +1,13 @@
 import { useState } from 'react';
 import { initialContacts } from './Data/contacts';
 
-export default function AddContact() {
-  const [contacts, setContacts] = useState(initialContacts);
-  const [title, setTitle] = useState("");
+
+export default function AddContact({ setContacts, contacts }) {
+    const [ name, setName ] = useState("");
+    const [ email, setEmail ] = useState(""); 
+    const [ phone, setPhone ] = useState("");
+    const [ company, setCompany ] = useState("");
+    const [ notes, setNotes ] = useState("")
 
   const createContact = async (contact) => {
     const url = 'https://jdfuskuvvrswqxjyhzyb.supabase.co/rest/v1/contacts';
@@ -27,45 +31,44 @@ export default function AddContact() {
   async function addContact(e) {
     e.preventDefault();
 
-    if (title.trim() !== "") {
-      const newContactItem = {
-        title: title,
-        created_at: new Date().toISOString()
-      };
+    if (name !== "") {
+      const newContactItem = new contacts(name, email, phone, company, notes);
 
-      const contactFromServer = await createContact(newContactItem);
+        // kald supabase, gem ny todo
+        const contactFromServer = await createContact(newContactItem);
 
       // Update state
-      setContacts([...contacts, contactFromServer]);
-      setTitle(""); // clear input
-    } else {
-      alert("Du skal da udfylde først for søren da");
+      setContacts([...contacts, contactFromServer ]); //js spread operator
+      }
+      else {
+        alert("Du skal da 'udfylde' først for 'søren' da")
+      }
+      // Tilføj newTodoItem til min todo list 
     }
-  }
 
-  function handleTitleChange(e) {
-    setTitle(e.target.value);
-  }
+    function handleInputChange(e) {
+    //  console.log(e.target.value);
+      setName(e.target.value);
+      setEmail(e.target.value);
+      setPhone(e.target.value);
+      setCompany(e.target.value);
+      setNotes(e.target.value);
+    }
 
-  return (
-    <>
-      <h2>Add new contact</h2>
-      <form onSubmit={addContact}>
-        <input 
-          type="text" 
-          placeholder="Title" 
-          value={title} 
-          onChange={handleTitleChange}
-        />
-        <button type="submit">Add contact</button>
-      </form>
 
-      <h3>Current contacts:</h3>
-      <ul>
-        {contacts?.map((c, i) => (
-          <li key={i}>{c.title}</li>
-        ))}
-      </ul>
-    </>
-  );
+    return (
+        <>
+        <h2>Add new contact</h2>
+        <form onSubmit={addContact}>
+            {/* Opret med name="attributs navn" */}
+           <input type="text" placeholder="Name" name="name" value={name} onChange={handleInputChange}/>
+           <input type="email" placeholder="Email" name="email" value={email} onChange={handleInputChange}/>
+           <input type="text" placeholder="Phone" name="phone" value={phone} onChange={handleInputChange}/>
+           <input type="text" placeholder="Company" name="company" value={company} onChange={handleInputChange}/>
+           <input type="text" placeholder="Notes" name="notes" value={notes} onChange={handleInputChange}/>
+
+           <button type="submit">Add contact</button>
+         </form>
+         </>
+    )
 }
