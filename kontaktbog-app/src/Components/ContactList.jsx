@@ -15,7 +15,7 @@ export default function ContactList({ contacts, selectedId, onSelect }) {
   return (
     <div className="section">
       <div className="list">
-        {contacts.map((c) => (
+        {contacts?.map((c) => (
           <ContactItem
             key={c.id}
             contact={c}

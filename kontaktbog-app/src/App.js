@@ -18,7 +18,7 @@ import { createClient } from '@supabase/supabase-js'
   // Eksempel på at hente data fra Supabase (kan tilpasses efter behov)
   const getContacts = async () => {
     const url = 'https://jdfuskuvvrswqxjyhzyb.supabase.co/rest/v1';
-    const apikey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt2c3Jhd2dhdnhrcnN2bWl2anZmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTkxNDExMzksImV4cCI6MjA3NDcxNzEzOX0.xGPY_82uf8focdGT05Jt62u5Z_oNcoOBzvaFgGb6X1I';
+    const apikey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpkZnVza3V2dnJzd3F4anloenliIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk0MTYxODYsImV4cCI6MjA3NDk5MjE4Nn0.Id8NLZXlNKW96d2D1esaIQYfotCyx0l0assQUqUYlOY';
 
     const data = await fetch(url + "/contacts", {
       headers: {
@@ -27,8 +27,9 @@ import { createClient } from '@supabase/supabase-js'
       }
     }).then(response => response.json())
 
+
     setContacts(data);
-    //console.log(data);
+    console.log(data);
   }
 
   useEffect(() => {
@@ -53,10 +54,11 @@ import { createClient } from '@supabase/supabase-js'
 
   // Brug useMemo til at finde den valgte kontakt ud fra selectedId
   // Dette genberegnes kun når contacts eller selectedId ændres
-  const selected = useMemo(
-    () => contacts.find((c) => c.id === selectedId) || null,
-    [contacts, selectedId]
-  );
+  // const selected = useMemo(
+  //   () => contacts?.find((c) => c.id === selectedId) || null,
+  //   [contacts, selectedId]
+  // );
+  const selected={};
 
   // Når brugeren klikker på en kontakt i venstre side
   // Opdaterer vi hvilken kontakt der er valgt

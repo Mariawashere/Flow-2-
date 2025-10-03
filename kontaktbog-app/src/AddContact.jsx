@@ -62,7 +62,7 @@ export default function AddContact() {
 
       <h3>Current contacts:</h3>
       <ul>
-        {contacts.map((c, i) => (
+        {contacts?.map((c, i) => (
           <li key={i}>{c.title}</li>
         ))}
       </ul>
