@@ -54,11 +54,11 @@ import { createClient } from '@supabase/supabase-js'
 
   // Brug useMemo til at finde den valgte kontakt ud fra selectedId
   // Dette genberegnes kun når contacts eller selectedId ændres
-  // const selected = useMemo(
-  //   () => contacts?.find((c) => c.id === selectedId) || null,
-  //   [contacts, selectedId]
-  // );
-  const selected={};
+  const selected = useMemo(
+    () => contacts?.find((c) => c.id === selectedId) || null,
+    [contacts, selectedId]
+  );
+  // const selected={};
 
   // Når brugeren klikker på en kontakt i venstre side
   // Opdaterer vi hvilken kontakt der er valgt
